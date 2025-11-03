@@ -29,9 +29,6 @@
                 --border-color: #ddd;
                 --nav-background-color: rgba(255, 255, 255, 0.85);
             }
-            .submit-app-button:hover {
-                 color: var(--background-color);
-            }
         }
 
         *, *::before, *::after { box-sizing: border-box; }
@@ -94,12 +91,6 @@
         .category-button { background-color: var(--surface-color); border: none; color: var(--text-primary); padding: 1rem; border-radius: 12px; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.8rem; font-weight: 600; }
         .category-button svg { width: 24px; height: 24px; color: var(--accent-color); }
         
-        .report-form { display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px; margin: auto; }
-        .report-form .form-group { position: relative; }
-        .report-form label { position: absolute; left: 1rem; top: -0.7rem; background-color: var(--background-color); padding: 0 0.5rem; font-size: 0.9rem; color: var(--text-secondary); }
-        .report-form input, .report-form textarea { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-primary); padding: 1rem; border-radius: 12px; font-size: 1rem; }
-        .report-form button { background-color: var(--accent-color); border: none; color: #fff; padding: 1rem; border-radius: 12px; font-size: 1.1rem; cursor: pointer; font-weight: 700; }
-        
         .bottom-nav {
             position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%); width: 90%;
             max-width: 400px; background-color: var(--nav-background-color);
@@ -114,58 +105,42 @@
         .hidden { display: none; }
         
         footer {
-            text-align: center;
-            padding: 2.5rem 1rem;
-            color: var(--text-secondary);
-            margin-top: 2rem;
-            border-top: 1px solid var(--border-color);
+            text-align: center; padding: 2.5rem 1rem; color: var(--text-secondary);
+            margin-top: 2rem; border-top: 1px solid var(--border-color);
         }
-        .submit-app-button {
-            display: inline-block; border: 2px solid var(--accent-color); color: var(--accent-color); background-color: transparent;
-            padding: 0.8rem 1.5rem; border-radius: 50px; font-size: 1rem; font-weight: 700; text-decoration: none;
-            margin-bottom: 2rem;
-            transition: background-color 0.2s, color 0.2s;
-        }
-        .submit-app-button:hover { background-color: var(--accent-color); color: #fff; }
-
-        .footer-contact p {
-            font-size: 1rem;
-            font-weight: 600;
+        .footer-contact { margin-bottom: 1.5rem; }
+        .footer-contact p { font-size: 1rem; font-weight: 600; color: var(--text-primary); margin: 0 0 1.2rem 0; }
+        .social-links { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; }
+        .social-links a { color: var(--text-secondary); transition: color 0.2s ease-in-out, transform 0.2s ease-in-out; display: inline-block; }
+        .social-links a:hover { color: var(--accent-color); transform: translateY(-3px); }
+        .social-links svg { width: 26px; height: 26px; }
+        .copyright { font-size: 0.9rem; color: var(--text-secondary); }
+        .copyright p { margin-bottom: 0.5rem; }
+        .copyright-name {
             color: var(--text-primary);
-            margin: 0 0 1rem 0;
+            font-weight: 600;
         }
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+        .footer-link {
+            color: var(--accent-color) !important;
+            font-weight: normal !important;
+            text-decoration: none;
         }
-        .social-links a {
-            color: var(--text-secondary);
-            transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
-            display: inline-block;
-        }
-        .social-links a:hover {
-            color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-        .social-links svg {
-            width: 28px;
-            height: 28px;
-        }
-        .copyright {
-            font-size: 0.9rem;
-            margin-top: 1.5rem;
-            color: var(--text-secondary);
-        }
-        .copyright a {
-             color: var(--text-primary);
-             font-weight: 600;
-             text-decoration: none;
-        }
-        .copyright a:hover {
-            color: var(--accent-color);
+        .footer-link:hover {
             text-decoration: underline;
+        }
+
+        /* প্রাইভেসি পলিসি পেজের জন্য CSS */
+        #policy-page { padding: 1rem; max-width: 800px; margin: auto; }
+        #policy-page h1, #policy-page h2 { color: var(--text-primary); }
+        #policy-page h1 { text-align: center; margin-bottom: 2rem; font-size: 1.8rem; }
+        #policy-page h2 { margin-top: 2rem; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; font-size: 1.4rem; }
+        #policy-page p, #policy-page ul { color: var(--text-secondary); line-height: 1.7; }
+        #policy-page ul { padding-left: 20px; }
+        #policy-page .highlight { color: #e74c3c; font-weight: bold; }
+        #policy-page a { color: var(--accent-color); font-weight: 600; }
+        #policy-page .footer-note {
+            margin-top: 3rem; text-align: center; font-size: 0.9em; color: var(--text-secondary);
+            border-top: 1px solid var(--border-color); padding-top: 1rem;
         }
     </style>
 </head>
@@ -192,56 +167,79 @@
                 <h2 class="section-title">Explore by Category</h2>
                 <div id="category-grid" class="category-grid"></div>
             </div>
-            
-            <div id="report-page" class="page-content">
-                <h2 class="section-title">Submit a Report</h2>
-                <form id="report-form" class="report-form">
-                    <div class="form-group"><label for="report-title">Title</label><input type="text" id="report-title" required></div>
-                    <div class="form-group"><label for="report-whatsapp">WhatsApp Number</label><input type="tel" id="report-whatsapp" required></div>
-                    <div class="form-group"><label for="report-description">Description</label><textarea id="report-description" rows="5" required></textarea></div>
-                    <button type="submit">Submit Report</button>
-                    <div id="success-message" class="hidden" style="text-align:center; color: var(--accent-color);">Report sent successfully!</div>
-                </form>
-            </div>
         </div>
 
         <div id="app-detail-page" class="page-content"></div>
         
-        <!-- ফুটার কোড আপডেট করা হয়েছে -->
-        <footer>
-            <a href="https://mood-vantech-developer.vercel.app/" target="_blank" rel="noopener noreferrer" class="submit-app-button">Submit Your App</a>
-            
+        <div id="policy-page" class="page-content">
+            <button class="back-button" onclick="showMainPages()">←</button>
+            <h1>MoodVantech Policy & Disclaimer</h1>
+            <p><strong>© 2025 MoodVantech. All rights reserved.</strong></p>
+            <h2>১️⃣ কপিরাইট ও মালিকানা সংক্রান্ত তথ্য</h2>
+            <p>এই ওয়েবসাইটে প্রদত্ত সমস্ত অ্যাপ, ফাইল বা সফটওয়্যার <strong>MoodVantech-এর মালিকানা নয়</strong>. আমরা কোনো কপিরাইট লঙ্ঘন করি না। এখানে দেওয়া ফাইলগুলো শুধুমাত্র <strong>শিক্ষামূলক, রিভিউ বা টেস্টিং উদ্দেশ্যে</strong> শেয়ার করা হয়েছে।</p>
+            <p class="highlight">ডাউনলোড এবং ইনস্টল সম্পূর্ণভাবে ব্যবহারকারীর দায়িত্ব।</p>
+            <p>ফাইল ইনস্টল করার আগে <strong>SHA256 হ্যাশ, VirusTotal স্ক্যান রিপোর্ট</strong> বা অন্যান্য নিরাপত্তা পরীক্ষা করে নেওয়া strongly recommended।</p>
+            <h2>২️⃣ DMCA / Takedown Policy</h2>
+            <p>MoodvanTech কপিরাইটকে সম্মান করে। যদি আপনি কোনো কপিরাইট মালিক হন এবং আপনার কন্টেন্ট সরাতে চান, অনুগ্রহ করে আমাদের ইমেইল করুন: <a href="mailto:moodvantech@hotmail.com">moodvantech@hotmail.com</a></p>
+            <p><strong>DMCA Takedown-এর জন্য প্রয়োজনীয় তথ্য:</strong></p>
+            <ul>
+                <li>আপনার নাম এবং যোগাযোগের তথ্য</li>
+                <li>সরানোর জন্য কন্টেন্টের URL</li>
+                <li>কপিরাইট বা মালিকানার প্রমাণ</li>
+            </ul>
+            <p>আমরা ৪৮ ঘণ্টার মধ্যে আপনার অনুরোধ পর্যালোচনা করে বৈধ হলে কন্টেন্ট সরিয়ে দেব।</p>
+            <h2>৩️⃣ ডাউনলোড ও ইনস্টলেশন সংক্রান্ত সতর্কতা</h2>
+            <ul>
+                <li>ওয়েবসাইটে দেওয়া ফাইলগুলো সর্বোচ্চ নিরাপত্তার চেষ্টা করে যাচাই করা হয়েছে।</li>
+                <li>ব্যবহারকারীকে সতর্ক করা হচ্ছে যে: <strong>ডাউনলোড বা ইনস্টল করলে সম্ভাব্য ক্ষতি বা ঝুঁকির দায় শুধুমাত্র ব্যবহারকারীর।</strong></li>
+                <li>সবসময় অফিসিয়াল বা Verified Mirror থেকে ডাউনলোড করুন।</li>
+            </ul>
+            <h2>৪️⃣ প্রাইভেসি স্টেটমেন্ট</h2>
+            <ul>
+                <li>আমরা ব্যবহারকারীর ব্যক্তিগত তথ্য সংরক্ষণ করি না, তবে Support বা Contact Form থেকে প্রাপ্ত ইমেইল/নাম শুধুমাত্র <strong>সাপোর্ট ও যোগাযোগের জন্য</strong> ব্যবহার করা হবে।</li>
+                <li>Cookies বা Analytics শুধুমাত্র ওয়েবসাইটের কার্যকারিতা ও ট্রাফিক অ্যানালিসিসের জন্য ব্যবহার করা হয়।</li>
+            </ul>
+            <h2>৫️⃣ যোগাযোগ</h2>
+            <p>যেকোনো প্রশ্ন, রিপোর্ট বা সহযোগিতার জন্য ইমেইল করুন: <a href="mailto:moodvantech@hotmail.com">moodvantech@hotmail.com</a></p>
+            <div class="footer-note">
+                © 2025 MoodVantech. All rights reserved. | Disclaimer & Privacy Policy apply.
+            </div>
+        </div>
+        
+        <footer id="main-footer">
             <div class="footer-contact">
-                <p>Contact Developer</p>
+                <p>Connect With Us</p>
                 <div class="social-links">
-                    <!-- ফেসবুক লিংক আপডেট করা হয়েছে -->
-                    <a href="https://www.facebook.com/rarajuofficial1" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <a href="https://www.facebook.com/profile.php?id=61583407223950" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                         <svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
                     </a>
-                    <!-- হোয়াটসঅ্যাপ নম্বর আপডেট করা হয়েছে -->
-                    <a href="https://wa.me/8801832791849" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zM12.04 20.12c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31c-.82-1.31-1.26-2.83-1.26-4.36 0-4.54 3.68-8.22 8.22-8.22 2.22 0 4.31.87 5.81 2.38s2.38 3.59 2.38 5.81c0 4.54-3.68 8.22-8.22 8.22zm4.49-6.16c-.25-.12-1.47-.72-1.7-.8s-.39-.12-.56.12c-.17.25-.64.8-.79.96s-.3.17-.56 0c-.25-.12-1.07-.39-2.04-1.26-.76-.67-1.27-1.5-1.42-1.75-.15-.25-.02-.38.11-.51.11-.11.25-.29.37-.43s.17-.21.25-.33c.08-.12.04-.25-.02-.37s-.56-1.34-.76-1.84c-.2-.48-.4-.42-.56-.42h-.48c-.17 0-.43.06-.66.31s-.87.85-.87 2.07c0 1.22.89 2.4 1.01 2.56.12.17 1.76 2.68 4.27 3.77 1.77.76 2.22.9 2.89.84.9-.08 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18s-.21-.16-.46-.28z"/></svg>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="X">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     </a>
-                    <!-- ইনস্টাগ্রাম লিংক আপডেট করা হয়েছে -->
-                    <a href="https://www.instagram.com/ra.raju.official" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2c2.72 0 3.05.01 4.12.06 1.06.05 1.79.22 2.42.47.65.25 1.13.59 1.62 1.08.49.49.83.97 1.08 1.62.25.63.42 1.36.47 2.42.05 1.07.06 1.4.06 4.12s-.01 3.05-.06 4.12c-.05 1.06-.22 1.79-.47 2.42-.25.65-.59 1.13-1.08 1.62-.49.49-.97.83-1.62 1.08-.63.25-1.36.42-2.42.47-1.07.05-1.4.06-4.12.06s-3.05-.01-4.12-.06c-1.06-.05-1.79-.22-2.42-.47-.65-.25-1.13-.59-1.62-1.08-.49-.49-.83-.97-1.08-1.62-.25-.63-.42-1.36-.47-2.42-.05-1.07-.06-1.4-.06-4.12s.01-3.05.06-4.12c.05-1.06.22-1.79.47-2.42.25-.65.59-1.13 1.08-1.62.49-.49.97-.83 1.62-1.08.63-.25 1.36-.42 2.42-.47C8.95 2.01 9.28 2 12 2zm0 1.8c-2.69 0-3.02.01-4.07.06-1.03.05-1.63.22-2.09.4-.5.19-.85.44-1.22.81s-.62.72-.81 1.22c-.18.46-.35 1.06-.4 2.09-.05 1.05-.06 1.38-.06 4.07s.01 3.02.06 4.07c.05 1.03.22 1.63.4 2.09.19.5.44.85.81 1.22s.72.62 1.22.81c.46.18 1.06.35 2.09.4 1.05.05 1.38.06 4.07.06s3.02-.01 4.07-.06c1.03-.05 1.63-.22 2.09-.4.5-.19.85-.44 1.22-.81s.62-.72.81-1.22c.18-.46.35-1.06.4-2.09.05-1.05.06-1.38.06-4.07s-.01-3.02-.06-4.07c-.05-1.03-.22-1.63-.4-2.09-.19-.5-.44-.85-.81-1.22s-.72-.62-1.22-.81c-.46-.18-1.06-.35-2.09-.4C15.02 3.81 14.69 3.8 12 3.8zM12 7.27c-2.61 0-4.73 2.12-4.73 4.73s2.12 4.73 4.73 4.73 4.73-2.12 4.73-4.73-2.12-4.73-4.73-4.73zm0 7.67c-1.62 0-2.93-1.31-2.93-2.93S10.38 9.07 12 9.07s2.93 1.31 2.93 2.93-1.31 2.94-2.93 2.94zM17.63 6.91c-.75 0-1.36-.61-1.36-1.36s.61-1.36 1.36-1.36 1.36.61 1.36 1.36-.61 1.36-1.36 1.36z"/></svg>
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="m9.417 15.181-.397 5.584c.568 0 .814-.244 1.109-.537l2.663-2.545 5.518 4.041c1.012.564 1.725.267 1.998-.931L23.456 3.954c.415-1.879-.64-2.583-1.88-2.122L1.855 7.979c-1.826.742-1.8 1.833-.304 2.333l4.734 1.488 11.259-7.197c.533-.337 1.02.055.602.434l-9.03 8.058z"/></svg>
                     </a>
-                    <a href="mailto:its.osman.xyz@gmail.com" aria-label="Email">
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.53.02c1.31-.02 2.61-.01 3.91.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-2.43.05-4.85-.98-6.42-3.02-1.5-1.94-1.62-4.6-1.09-6.9.52-2.23 2.22-4.1 4.24-5.18.17-.09.34-.17.51-.23.01-2.11-.01-4.21.02-6.32.03-2.33 1.66-4.44 3.92-5.14 1.09-.33 2.24-.46 3.39-.46z"/></svg>
+                    </a>
+                    <a href="mailto:moodvantech@hotmail.com" aria-label="Email">
                         <svg fill="currentColor" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
                     </a>
                 </div>
             </div>
 
-            <!-- কপিরাইট লেখা ও লিংক আপডেট করা হয়েছে -->
-            <p class="copyright">&copy; 2025 <a href="https://www.facebook.com/rarajuofficial1" target="_blank" rel="noopener noreferrer">Ra Raju Official</a>. All rights reserved.</p>
-
+            <div class="copyright">
+                <!-- কপিরাইট নাম পরিবর্তন করা হয়েছে -->
+                <p>&copy; 2025 <span class="copyright-name">MoodVantech</span>. All rights reserved.</p>
+                <a href="#policy-page" class="footer-link">Policy & Disclaimer</a>
+            </div>
         </footer>
     </main>
     
     <nav class="bottom-nav">
         <button class="nav-button active" data-page="home-page"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg><span>Home</span></button>
         <button class="nav-button" data-page="categories-page"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg><span>Categories</span></button>
-        <button class="nav-button" data-page="report-page"><svg fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636M12 18a6 6 0 100-12 6 6 0 000 12z" clip-rule="evenodd"/></svg><span>Report</span></button>
+        <button class="nav-button" id="about-nav-button"><svg fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg><span>About</span></button>
     </nav>
 
     <!-- Adsterra & Firebase Scripts -->
@@ -252,23 +250,23 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
 
     <script>
-        // --- JavaScript অপরিবর্তিত আছে ---
         document.addEventListener('DOMContentLoaded', function() {
             const firebaseConfig = { apiKey: "AIzaSyDR9_p1nu3RqDWGIHVubYUvy_tasrH3zUs", authDomain: "moodvantech.firebaseapp.com", databaseURL: "https://moodvantech-default-rtdb.firebaseio.com", projectId: "moodvantech", storageBucket: "moodvantech.appspot.com", messagingSenderId: "447794004479", appId: "1:447794004479:web:01b533e0c4dfbd3119a7ca" };
             firebase.initializeApp(firebaseConfig); const database = firebase.database(); let allApps = [];
-            const mainContent = document.getElementById('main-content'); const mainPages = document.getElementById('main-pages'); const pageHeader = document.getElementById('page-header'); const loadingSpinner = document.getElementById('loading-spinner'); const appList = document.getElementById('app-list'); const searchInput = document.getElementById('searchInput'); const navButtons = document.querySelectorAll('.nav-button'); const pages = document.querySelectorAll('.page-content'); const pageTitle = document.getElementById('page-title'); const categoryGrid = document.getElementById('category-grid'); const reportForm = document.getElementById('report-form'); const appDetailPage = document.getElementById('app-detail-page'); const adsterraSmartLink = 'https://www.effectivegatecpm.com/kjdgh92d?key=8e28004b7bffe1a54ed0cb95f68edf08';
+            const mainContent = document.getElementById('main-content'); const mainPages = document.getElementById('main-pages'); const pageHeader = document.getElementById('page-header'); const loadingSpinner = document.getElementById('loading-spinner'); const appList = document.getElementById('app-list'); const searchInput = document.getElementById('searchInput'); const navButtons = document.querySelectorAll('.nav-button'); const pages = document.querySelectorAll('.page-content'); const pageTitle = document.getElementById('page-title'); const categoryGrid = document.getElementById('category-grid'); const appDetailPage = document.getElementById('app-detail-page'); const policyPage = document.getElementById('policy-page'); const adsterraSmartLink = 'https://www.effectivegatecpm.com/kjdgh92d?key=8e28004b7bffe1a54ed0cb95f68edf08';
             function fetchApps() { database.ref('apps').orderByChild('created_at').on('value', (s) => { allApps = []; s.forEach((cs) => { allApps.push({ id: cs.key, ...cs.val() }); }); allApps.reverse(); displayApps(allApps); populateCategories(); handleRouting(); loadingSpinner.style.display = 'none'; mainContent.style.display = 'block'; }, (error) => { console.error("Firebase fetch error:", error); loadingSpinner.innerHTML = `<p>Error loading data. Please try again later.</p>`; }); }
             function displayApps(apps) { appList.innerHTML = apps.length ? apps.map(app => `<div class="app-item" data-id="${app.id}"><img src="${app.icon_url}" alt="${app.name}"><div class="app-info"><h3>${app.name}</h3><p>${app.developer || app.category}</p><div class="app-meta"><span>⭐ ${app.rating || 'N/A'}</span> • <span>${app.size || ''}</span></div></div></div>`).join('') : '<p>No apps found.</p>'; }
-            function showAppDetailPage(appId) { const app = allApps.find(a => a.id === appId); if (!app) { window.location.hash = ''; handleRouting(); return; }; appDetailPage.innerHTML = `<div id="app-detail-container"><button class="back-button" onclick="showMainPages()">←</button><div class="app-detail-header"><img src="${app.icon_url}" alt="${app.name}"><div class="app-detail-title-container"><div class="app-detail-info"><h1>${app.name}</h1><p>${app.developer}</p></div><button id="share-app-button" class="share-button" title="Share App"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"></path></svg></button></div></div><div class="app-detail-meta"><div class="meta-item"><div>⭐ ${app.rating || 'N/A'}</div>Rating</div><div class="meta-item"><div>${app.size || 'N/A'}</div>Size</div><div class="meta-item"><div>${app.category}</div>Category</div></div><div class="app-detail-description"><h3>About this app</h3><p>${(app.description || '').replace(/\n/g, '<br>')}</p></div><a href="${app.download_link}" class="detail-download-button" data-is-download="true">Download</a><div class="native-ad-container"><small class="ad-label">Sponsored</small><div id="container-0ae11e6a89fb1101a45e9b71effed5b5"></div></div></div>`; mainPages.style.display = 'none'; appDetailPage.classList.add('active'); if(window.location.hash !== `#app/${appId}`) { window.location.hash = `app/${appId}`; } const shareButton = document.getElementById('share-app-button'); shareButton.addEventListener('click', async () => { const shareData = { title: app.name, text: `Check out ${app.name} on MoodVantech!`, url: window.location.href }; if (navigator.share) { try { await navigator.share(shareData); } catch (err) { console.error("Share failed:", err); } } else { try { await navigator.clipboard.writeText(window.location.href); shareButton.innerHTML = 'Copied!'; setTimeout(() => { shareButton.innerHTML = `<svg fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"></path></svg>`; }, 2000); } catch (err) { console.error('Failed to copy text: ', err); alert('Failed to copy link.'); } } }); }
+            function showAppDetailPage(appId) { const app = allApps.find(a => a.id === appId); if (!app) { window.location.hash = ''; handleRouting(); return; }; mainPages.style.display = 'none'; policyPage.classList.remove('active'); appDetailPage.innerHTML = `<div id="app-detail-container"><button class="back-button" onclick="showMainPages()">←</button><div class="app-detail-header"><img src="${app.icon_url}" alt="${app.name}"><div class="app-detail-title-container"><div class="app-detail-info"><h1>${app.name}</h1><p>${app.developer}</p></div><button id="share-app-button" class="share-button" title="Share App"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"></path></svg></button></div></div><div class="app-detail-meta"><div class="meta-item"><div>⭐ ${app.rating || 'N/A'}</div>Rating</div><div class="meta-item"><div>${app.size || 'N/A'}</div>Size</div><div class="meta-item"><div>${app.category}</div>Category</div></div><div class="app-detail-description"><h3>About this app</h3><p>${(app.description || '').replace(/\n/g, '<br>')}</p></div><a href="${app.download_link}" class="detail-download-button" data-is-download="true">Download</a><div class="native-ad-container"><small class="ad-label">Sponsored</small><div id="container-0ae11e6a89fb1101a45e9b71effed5b5"></div></div></div>`; appDetailPage.classList.add('active'); if(window.location.hash !== `#app/${appId}`) { window.location.hash = `app/${appId}`; } document.getElementById('share-app-button').addEventListener('click', async () => { const shareData = { title: app.name, text: `Check out ${app.name} on MoodVantech!`, url: window.location.href }; if (navigator.share) { try { await navigator.share(shareData); } catch (err) { console.error("Share failed:", err); } } else { try { await navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!'); } catch (err) { console.error('Failed to copy text: ', err); alert('Failed to copy link.'); } } }); }
+            function showPolicyPage() { mainPages.style.display = 'none'; appDetailPage.classList.remove('active'); policyPage.classList.add('active'); window.scrollTo(0, 0); }
             window.showMainPages = function() { history.pushState("", document.title, window.location.pathname + window.location.search); handleRouting(); }
-            function handleRouting() { const hash = window.location.hash; if (hash.startsWith('#app/')) { const appId = hash.substring(5); if (allApps.length === 0) { setTimeout(() => handleRouting(), 100); return; } showAppDetailPage(appId); } else { appDetailPage.classList.remove('active'); mainPages.style.display = 'block'; const pageId = hash.substring(1) || 'home-page'; const validPages = ['home-page', 'categories-page', 'report-page']; switchPage(validPages.includes(pageId) ? pageId : 'home-page'); } }
-            document.body.addEventListener('click', e => { const appItem = e.target.closest('.app-item'); if (appItem) { showAppDetailPage(appItem.dataset.id); return; } const downloadButton = e.target.closest('[data-is-download="true"]'); if (downloadButton) { e.preventDefault(); const actualDownloadUrl = downloadButton.href; window.open(adsterraSmartLink, '_blank'); setTimeout(() => { window.location.href = actualDownloadUrl; }, 500); } });
+            function handleRouting() { const hash = window.location.hash; if (hash.startsWith('#app/')) { const appId = hash.substring(5); if (allApps.length === 0) { setTimeout(() => handleRouting(), 100); return; } showAppDetailPage(appId); } else if (hash === '#policy-page') { showPolicyPage(); } else { appDetailPage.classList.remove('active'); policyPage.classList.remove('active'); mainPages.style.display = 'block'; const pageId = hash.substring(1) || 'home-page'; const validPages = ['home-page', 'categories-page']; switchPage(validPages.includes(pageId) ? pageId : 'home-page'); } }
+            document.body.addEventListener('click', e => { const appItem = e.target.closest('.app-item'); if (appItem) { window.location.hash = `app/${appItem.dataset.id}`; return; } const downloadButton = e.target.closest('[data-is-download="true"]'); if (downloadButton) { e.preventDefault(); const actualDownloadUrl = downloadButton.href; window.open(adsterraSmartLink, '_blank'); setTimeout(() => { window.location.href = actualDownloadUrl; }, 500); } const policyLink = e.target.closest('a[href="#policy-page"]'); if (policyLink) { e.preventDefault(); window.location.hash = 'policy-page'; } });
             function populateCategories() { const categories = [...new Set(allApps.map(app => app.category).filter(Boolean))]; categoryGrid.innerHTML = categories.map(cat => `<button class="category-button" data-category="${cat}">${cat}</button>`).join(''); }
-            function switchPage(pageId) { pages.forEach(p => p.classList.remove('active')); const newPage = document.getElementById(pageId); if (newPage) newPage.classList.add('active'); navButtons.forEach(b => b.classList.toggle('active', b.dataset.page === pageId)); pageHeader.style.display = (pageId === 'report-page') ? 'none' : 'block'; }
-            navButtons.forEach(button => button.addEventListener('click', () => { const pageId = button.dataset.page; history.pushState(null, '', `#${pageId}`); switchPage(pageId); }));
-            categoryGrid.addEventListener('click', e => { const target = e.target.closest('.category-button'); if (target) { const category = target.dataset.category; displayApps(allApps.filter(app => app.category === category)); pageTitle.textContent = category; switchPage('home-page'); history.pushState(null, '', '#home-page'); } });
-            searchInput.addEventListener('input', e => { const term = e.target.value.toLowerCase(); const filteredApps = allApps.filter(app => app.name.toLowerCase().includes(term)); displayApps(filteredApps); pageTitle.textContent = term ? `Results for "${term}"` : 'Featured Apps'; switchPage('home-page'); });
-            reportForm.addEventListener('submit', e => { e.preventDefault(); database.ref('reports').push({ title: document.getElementById('report-title').value, whatsapp: document.getElementById('report-whatsapp').value, description: document.getElementById('report-description').value, createdAt: firebase.database.ServerValue.TIMESTAMP }).then(() => { reportForm.reset(); const successMsg = document.getElementById('success-message'); successMsg.classList.remove('hidden'); setTimeout(() => successMsg.classList.add('hidden'), 3000); }).catch(err => console.error("Report submission error:", err)); });
+            function switchPage(pageId) { document.querySelectorAll('#main-pages .page-content').forEach(p => p.classList.remove('active')); const newPage = document.getElementById(pageId); if (newPage) newPage.classList.add('active'); navButtons.forEach(b => b.classList.toggle('active', b.dataset.page === pageId)); pageHeader.style.display = 'block'; }
+            navButtons.forEach(button => { if(button.dataset.page) { button.addEventListener('click', () => { const pageId = button.dataset.page; window.location.hash = pageId; }); } });
+            document.getElementById('about-nav-button').addEventListener('click', () => { if(window.location.hash) window.location.hash = ''; setTimeout(() => document.getElementById('main-footer').scrollIntoView({ behavior: 'smooth' }), 100); });
+            categoryGrid.addEventListener('click', e => { const target = e.target.closest('.category-button'); if (target) { const category = target.dataset.category; displayApps(allApps.filter(app => app.category === category)); pageTitle.textContent = category; window.location.hash = 'home-page'; } });
+            searchInput.addEventListener('input', e => { const term = e.target.value.toLowerCase(); const filteredApps = allApps.filter(app => app.name.toLowerCase().includes(term)); displayApps(filteredApps); pageTitle.textContent = term ? `Results for "${term}"` : 'Featured Apps'; window.location.hash = 'home-page'; });
             window.addEventListener('hashchange', handleRouting);
             fetchApps();
         });
